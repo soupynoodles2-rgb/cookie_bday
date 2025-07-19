@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Bday Cookie 🎂</title>
+  <link rel="stylesheet" href="styles2.css">
+</head>
+<body>
+
+<div class="theme-toggle">
+  <input type="checkbox" id="darkModeToggle">
+  <label for="darkModeToggle" class="toggle-label">🌙</label>
+</div>
+
+<!-- Wrapper starts -->
+<div class="box-wrapper">
+
+  <div class="hidden-box">
+    <button class="reveal-btn">Reveal</button>
+    <div class="hidden-message">
+      <h1>Happy Birthday Cookie🎉</h1><br> <h3>To The spiciest Scorpio I know🌶️🦂</h3>
+    </div>
+  </div>
+
+  <div class="hidden-box">
+    <button class="reveal-btn">Reveal</button>
+    <div class="hidden-message">
+      May your day be as <strong>Fiery</strong> and <strong>Fabulous</strong> as you are 🔥💃
+    </div>
+  </div>
+
+  <div class="hidden-box">
+    <button class="reveal-btn">Reveal</button>
+    <div class="hidden-message">
+      I know you like Rasgullas very much, but little you know that <strong>YOU</strong> are the real dessert I crave every day 😭😚🍬
+    </div>
+  </div>
+
+  <div class="hidden-box">
+    <button class="reveal-btn">Reveal</button>
+    <div class="hidden-message">
+      You vibe with <strong>Black</strong> & <strong>Dark Lavender</strong> 🎨 I don’t remember seeing you wearing Black or Lavender but I know it would create chaos in my <strong>Mind</strong>🧠 & <strong>Heart</strong>❤️. A <strong>BIG ALERT</strong> of Dopamine & Serotonin 💖
+    </div>
+  </div>
+
+  <div class="hidden-box">
+    <button class="reveal-btn">Reveal</button>
+    <div class="hidden-message">
+      You're a <strong>Scorpio</strong>—full of mystery and passion ♏🖤<br>
+      As I dated you, I learned that you don’t flirt with a Scorpio... You survive it. And I'd happily lose to you every time 😘🏳️
+    </div>
+  </div>
+
+  <div class="hidden-box">
+    <button class="reveal-btn">Reveal</button>
+    <div class="hidden-message">
+      <p>Also... if you ever doubt how amazing you are, <a href="https://www.wattpad.com/story-link-here" target="_blank" class="mystery-link">read your work</a> again. You wrote a whole damn world, Queen 👑📖</p>
+    </div>
+  </div>
+
+</div>
+<!-- Wrapper ends -->
+
+<div class="footer">
+  <p>Made with love by your <strong>Mochi</strong> ✨❤️</p>
+</div>
+
+<!-- Reveal message script -->
+<script>
+  document.querySelectorAll('.reveal-btn').forEach(button => {
+    button.addEventListener('click', () => {
+      const message = button.nextElementSibling;
+      if (message.style.display === "none" || message.style.display === "") {
+        message.style.display = "block";
+        button.style.display = "none";
+      }
+    });
+  });
+</script>
+
+<!-- Floating hearts -->
+<script>
+  const heartColors = ['#ff69b4', '#da70d6', '#e6e6fa']; // pink, purple, lavender
+
+  document.addEventListener('click', function (e) {
+    const heart = document.createElement("div");
+    heart.className = "floating-heart";
+    const color = heartColors[Math.floor(Math.random() * heartColors.length)];
+    heart.style.setProperty('--heart-color', color);
+    heart.style.left = e.clientX + 'px';
+    heart.style.top = e.clientY + 'px';
+    document.body.appendChild(heart);
+    setTimeout(() => {
+      heart.remove();
+    }, 2000);
+  });
+</script>
+
+<!-- Dark mode toggle -->
+<script>
+  const toggle = document.getElementById('darkModeToggle');
+  toggle.addEventListener('change', () => {
+    document.body.classList.toggle('dark-mode');
+  });
+</script>
+
+</body>
+</html>
