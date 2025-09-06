@@ -1,0 +1,280 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #1a001f; /* darker purple */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.surprise-wrapper {
+  position: relative;
+  text-align: center;
+}
+
+/* Neon glowing white rectangles for pull-cord, love, and congrats sections */
+.white-rectangle,
+.love-white-rect,
+.congrats-section {
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 15px #ff69b4, 0 0 30px #ff69b4, 0 0 50px #ff69b4, 0 0 80px #ff69b4; /* neon pink glow */
+  transition: box-shadow 0.3s, transform 0.2s;
+}
+
+.white-rectangle:hover,
+.love-white-rect:hover,
+.congrats-section:hover {
+  box-shadow: 0 0 25px #ff69b4, 0 0 50px #ff69b4, 0 0 75px #ff69b4, 0 0 100px #ff69b4;
+  transform: scale(1.02);
+}
+
+/* Pull Cord Section */
+.white-rectangle {
+  width: 150px;
+  height: 250px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 10px;
+}
+
+.cord-line {
+  width: 4px;
+  height: 150px;
+  background: #8b4513;
+  transition: box-shadow 0.3s;
+}
+
+.cord-handle {
+  width: 30px;
+  height: 30px;
+  background: #ff6961;
+  border-radius: 50%;
+  margin-top: 5px;
+  cursor: grab;
+  transition: transform 0.5s ease-in-out; /* smoother animation */
+}
+
+.cord-handle.glow {
+  box-shadow: 0 0 15px #ff69b4, 0 0 30px #ff69b4, 0 0 50px #ff69b4;
+}
+
+.cord-line.glow {
+  box-shadow: 0 0 10px #ff69b4, 0 0 20px #ff69b4;
+}
+
+.cord-handle:hover {
+  box-shadow: 0 0 15px #ff69b4, 0 0 30px #ff69b4, 0 0 50px #ff69b4;
+  transform: scale(1.1);
+}
+
+.pull-msg {
+  color: #ff69b4;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+/* Love Section */
+.love-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.love-msg {
+  color: #ff69b4;
+  font-weight: bold;
+  margin-bottom: 10px;
+  animation: popIn 0.5s ease forwards;
+}
+
+.love-white-rect {
+  width: 280px; /* wider like congrats */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.love-image img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.love-buttons {
+  margin-top: 15px;
+}
+
+.love-buttons button {
+  padding: 10px 20px;
+  margin: 0 10px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+#yes-btn {
+  background: green;
+  color: white;
+}
+
+#yes-btn:hover {
+  transform: scale(1.1);
+}
+
+#no-btn {
+  background: red;
+  color: white;
+  position: relative;
+}
+
+#no-btn:hover {
+  animation: shake 0.3s;
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}
+
+/* Congratulations Section */
+.congrats-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+  border-radius: 10px;
+  margin-top: 20px;
+  width: 300px;  
+  min-height: 350px;
+  box-shadow: 0 0 15px #ff69b4, 0 0 30px #ff69b4, 0 0 50px #ff69b4, 0 0 80px #ff69b4;
+  transition: box-shadow 0.3s, transform 0.2s;
+}
+
+.congrats-section:hover {
+  box-shadow: 0 0 25px #ff69b4, 0 0 50px #ff69b4, 0 0 75px #ff69b4, 0 0 100px #ff69b4;
+  transform: scale(1.02);
+}
+
+.congrats-text {
+  color: #ff69b4;
+  font-size: 20px;
+  margin-bottom: 5px;
+  animation: popIn 0.6s ease forwards;
+}
+
+.love-text {
+  color: black;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.congrats-gif img {
+  width: 280px;   
+  height: 180px;  
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+/* Return Button */
+#return-btn {
+  padding: 10px 20px;
+  background: #a0c4ff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* Purple Boxes Section (OG layout) */
+.purple-boxes-section {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.purple-box {
+  width: 100px;
+  height: 100px;
+  background: #4b0082;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  text-align: center;
+  position: relative;
+
+  box-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #ff00ff, 0 0 50px #ff00ff;
+  border: 2px solid #ff00ff;
+}
+
+.purple-box::after {
+  content: '';
+  position: absolute;
+  top: -5px; left: -5px; right: -5px; bottom: -5px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px #ff00ff, 0 0 40px #ff00ff, 0 0 60px #ff00ff;
+  opacity: 0.6;
+  animation: pulseGlow 1.5s infinite alternate;
+}
+
+@keyframes pulseGlow {
+  from { opacity: 0.6; }
+  to { opacity: 1; }
+}
+
+.purple-box:hover {
+  transform: scale(1.05);
+}
+
+/* Confetti container */
+#confetti-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 999;
+  overflow: hidden;
+}
+
+/* Pop-in animation for texts */
+@keyframes popIn {
+  0% { transform: scale(0); opacity: 0; }
+  70% { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(1); }
+}
+
+/* Optional floating hearts (trigger in JS if you want) */
+.heart {
+  position: absolute;
+  color: #ff69b4;
+  font-size: 16px;
+  animation: floatUp 2s ease-out forwards;
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(-150px); opacity: 0; }
+}
+
+.hidden {
+  display: none;
+}

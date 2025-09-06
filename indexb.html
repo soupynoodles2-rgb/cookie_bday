@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Bday Cookie 🎂</title>
+<link rel="stylesheet" href="stylesb.css">
+</head>
+<body>
+
+<!-- Confetti container -->
+<div id="confetti-container"></div>
+<div id="tap-heart-container"></div> <!-- Tap hearts container -->
+
+<div class="surprise-wrapper">
+
+  <!-- Pull Cord Section -->
+  <div class="pull-cord-section" id="pull-cord-section">
+    <div class="white-rectangle">
+      <div class="cord-line"></div>
+      <div class="cord-handle" id="cord-handle"></div>
+    </div>
+    <p class="pull-msg">Pull the cord for surprise</p>
+  </div>
+
+  <!-- Love Question Section -->
+  <div class="love-section hidden" id="love-section">
+    <div class="love-white-rect">
+      <p class="love-msg">🥺🥺🥺🥺🥺</p>
+      <div class="love-image">
+        <img id="love-img" src="dulm.gif" alt="Your Image Here">
+      </div>
+      <div class="love-buttons">
+        <button id="yes-btn">Yes</button>
+        <button id="no-btn">No</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Congratulations Section -->
+  <div class="congrats-section hidden" id="congrats-section">
+    <div class="congrats-gif">
+      <img id="congrats-gif" src="dance.gif" alt="GIF Here">
+    </div>
+    <p class="congrats-text">Congratulations!</p>
+    <p class="love-text">Love you babe❤️😘❤️</p>
+    <button id="return-btn" onclick="window.location.href='index0.html'">The End?</button>
+  </div>
+
+</div>
+
+<script src="gameb.js"></script>
+<script>
+// Elements
+let noBtn = document.getElementById('no-btn');
+let yesBtn = document.getElementById('yes-btn');
+let loveSection = document.getElementById('love-section');
+let congratsSection = document.getElementById('congrats-section');
+let pullCordSection = document.getElementById('pull-cord-section');
+let cordHandle = document.getElementById('cord-handle');
+
+let noTries = 0;
+
+// No button dodging (mobile: on touch/click)
+noBtn.addEventListener('mouseenter', () => {
+  if(noTries < 3){
+    noBtn.style.position = 'absolute';
+    noBtn.style.top = Math.random() * 80 + '%';
+    noBtn.style.left = Math.random() * 80 + '%';
+    noTries++;
+  } else {
+    noBtn.style.display = 'none';
+  }
+});
+
+// Yes button click
+yesBtn.addEventListener('click', () => {
+  loveSection.classList.add('hidden');
+  congratsSection.classList.remove('hidden');
+  createConfetti();
+});
+
+// Pull cord click -> show love section
+cordHandle.addEventListener('click', () => {
+  pullCordSection.classList.add('hidden');
+  loveSection.classList.remove('hidden');
+});
+
+// Confetti function
+function createConfetti() {
+  const confettiContainer = document.getElementById('confetti-container');
+  const colors = ['#ff0a54', '#ff477e', '#ff85a1', '#fbb1b1', '#f9bec7'];
+  
+  for (let i = 0; i < 100; i++) {
+    const confetti = document.createElement('div');
+    confetti.style.position = 'absolute';
+    confetti.style.width = '8px';
+    confetti.style.height = '8px';
+    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+    confetti.style.top = '-10px';
+    confetti.style.left = Math.random() * 100 + '%';
+    confetti.style.opacity = Math.random();
+    confetti.style.borderRadius = '50%';
+    confettiContainer.appendChild(confetti);
+
+    const fallDuration = Math.random() * 2 + 3;
+    confetti.animate([
+      { transform: `translateY(0px)` },
+      { transform: `translateY(${window.innerHeight}px)` }
+    ], {
+      duration: fallDuration * 1000,
+      iterations: 1,
+      easing: 'ease-out',
+      fill: 'forwards'
+    });
+
+    setTimeout(() => confetti.remove(), fallDuration * 1000);
+  }
+}
+
+// --- Mobile tap hearts ---
+document.addEventListener('touchstart', (e) => {
+  createTapHeart(e.touches[0].clientX, e.touches[0].clientY);
+});
+
+function createTapHeart(x, y){
+  const heart = document.createElement('div');
+  heart.innerText = '❤️';
+  heart.style.position = 'fixed';
+  heart.style.left = (x - 10) + 'px';
+  heart.style.top = (y - 10) + 'px';
+  heart.style.fontSize = '24px';
+  heart.style.opacity = 1;
+  heart.style.transition = 'transform 1s ease-out, opacity 1s ease-out';
+  document.getElementById('tap-heart-container').appendChild(heart);
+
+  // Animate float up and fade out
+  setTimeout(() => {
+    heart.style.transform = 'translateY(-100px) scale(1.2)';
+    heart.style.opacity = 0;
+  }, 10);
+
+  // Remove after animation
+  setTimeout(() => heart.remove(), 1100);
+}
+</script>
+
+</body>
+</html>
